@@ -1,0 +1,17 @@
+<div class="zippy">
+  <div class="zippy-heading"
+  [class.expended]="isExpended"
+  (click)="toggle()"
+  >
+    {{title}}
+    <span class="glyphicon"
+    [ngClass]="{
+      'glyphicon-chevron-up':isExpended,
+      'glyphicon-chevron-down':!isExpended
+    }"
+    ></span>
+  </div>
+  <div *ngIf="isExpended" class="zippy-body">
+    <ng-content></ng-content>
+  </div>
+</div>
