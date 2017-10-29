@@ -1,0 +1,14 @@
+.media-object{
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+}
+.url{
+  float: top;
+}
+.name{
+  float: right;
+}
+.avatar_url{
+  cursor: pointer;
+}
