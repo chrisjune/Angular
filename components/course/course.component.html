@@ -1,0 +1,14 @@
+<h1>Angular</h1>
+<h3>{{courses.length}} Authors!</h3>
+<ul>
+  <li *ngFor='let course of courses'>{{course}}</li>
+</ul>
+
+<table [border]= "borderSize">
+  <tr>
+    <td [colSpan]= "colSpan">Hi table</td>
+  </tr>
+</table>
+<br/>
+
+<input #email (keyup.enter)="onKeyUp(email.value)" />

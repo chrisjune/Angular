@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+  <div class="panel-heading"
+  [ngStyle]="{
+    'backgroundColor': isOn ? '#CCC' : 'white'
+  }"
+  (click)="isOn = ! isOn"
+  >{{title}}</div>
+  <div *ngIf="isOn" class="panel-body">{{contents}}</div>
+</div>

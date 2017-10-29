@@ -1,0 +1,73 @@
+<form #f="ngForm" (ngSubmit)="submit(f)">
+  <div ngModelGroup="contact" #contact="ngModelGroup">
+      <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input
+            required
+            minlength="3"
+            maxlength="10"
+            pattern="banana"
+            ngModel
+            name="firstName"
+            #firstName="ngModel"
+            (change)="log(firstName)"
+            id="firstName"
+            type="text"
+            class="form-control">
+
+          <div
+            class="alert alert-danger"
+            *ngIf="firstName.touched && firstName.invalid">
+            <div *ngIf="firstName?.errors.required">
+              FIrst name is requred
+            </div>
+            <div *ngIf="firstName?.errors.minlength">
+              first name should be min {{firstName?.errors.minlength.requiredLength}}
+            </div>
+            <div *ngIf="firstName?.errors.pattern">
+              pattern error
+            </div>
+          </div>
+        </div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="comment">
+      Comment
+    </label>
+    <textarea
+      ngModel
+      name="comment"
+      #comment="ngModel"
+      id="comment"
+      cols="30"
+      (change)="log(comment)"
+      rows="10"
+      class="form-control">
+    </textarea>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ngModel name="isSubscribed">Subscribe to mailing list
+    </label>
+  </div>
+  <div class="form-group">
+    <label for="" id="contactMethod">Contact Method</label>
+    <select multiple ngModel name="contactMethod" id="contactmethod" class="form-control">
+      <option value=""></option>
+      <option *ngFor="let method of contactMethod" [ngValue]="method">{{method.name}}</option>
+    </select>
+  </div>
+  <div *ngFor="let method of contactMethod" class="radio">
+    <label>
+      <input ngModel type="radio" name="contactMethod" [value]="method.id">
+      {{method.name}}
+    </label>
+  </div>
+
+  <p>
+    {{f.value | json}}
+  </p>
+  <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+</form>
